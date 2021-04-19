@@ -1,0 +1,24 @@
+[Unit]
+Description=ohavatar
+ConditionPathExists=/opt/ohavatar/ohavatar
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+WorkingDirectory=/opt/ohavatar
+ExecStart=/opt/ohavatar/ohavatar
+StandardError=append:/var/log/ohavatar/app.log
+
+Restart=on-failure
+RestartSec=10
+
+ExecStartPre=/bin/mkdir -p /var/log/ohavatar
+ExecStartPre=/bin/chown syslog:adm /var/log/ohavatar
+ExecStartPre=/bin/touch /var/log/ohavatar/app.log
+ExecStartPre=/bin/chmod 775 /opt/ohavatar/ohavatar
+
+[Install]
+WantedBy=multi-user.target
