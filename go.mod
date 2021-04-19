@@ -1,4 +1,4 @@
-module ohavatar
+module yavatar
 
 go 1.13
 
