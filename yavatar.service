@@ -10,14 +10,10 @@ Group=root
 
 WorkingDirectory=/opt/yavatar
 ExecStart=/opt/yavatar/yavatar
-StandardError=append:/var/log/yavatar/app.log
 
 Restart=on-failure
 RestartSec=10
 
-ExecStartPre=/bin/mkdir -p /var/log/yavatar
-ExecStartPre=/bin/chown syslog:adm /var/log/yavatar
-ExecStartPre=/bin/touch /var/log/yavatar/app.log
 ExecStartPre=/bin/chmod 775 /opt/yavatar/yavatar
 
 [Install]
