@@ -18,6 +18,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer img.Body.Close()
 
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Length", fmt.Sprint(img.ContentLength))
 	w.Header().Set("Content-Type", img.Header.Get("Content-Type"))
 	if _, err = io.Copy(w, img.Body); err != nil {
